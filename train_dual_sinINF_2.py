@@ -33,7 +33,7 @@ parser.add_argument('--model_name', '-m', type=str, default='FEANet')
 parser.add_argument('--batch_size', '-b', type=int, default=5)
 parser.add_argument('--lr_start', '-ls', type=float, default=0.03)
 parser.add_argument('--seed', '-seed',default=42, type=int,help='seed for initializing training. ')
-parser.add_argument('--gpu', '-g', type=int, default=1)
+parser.add_argument('--gpu', '-g', type=int, default=2)
 ""
 parser.add_argument('--lr_decay', '-ld', type=float, default=0.95)
 parser.add_argument('--epoch_max', '-em', type=int, default=200) # please stop training mannully

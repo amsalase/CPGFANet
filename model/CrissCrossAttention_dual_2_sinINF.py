@@ -303,8 +303,8 @@ class TransBottleneck(nn.Module):
 
 
 def unit_test():
-    net = FEANet(9).cuda(0)
-    image = torch.randn(1, 4, 480, 640).cuda(0)
+    net = FEANet(9).cuda(2)
+    image = torch.randn(1, 4, 480, 640).cuda(2)
     with torch.no_grad():
         output = net.forward(image)
     flops, params = profile(net, inputs=(image, ))
