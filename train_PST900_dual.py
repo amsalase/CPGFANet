@@ -55,7 +55,7 @@ def train(epo, model, train_loader, optimizer):
         logits = model(images)
         DiceLoss_fn = DiceLoss(mode="multiclass")
         SoftCrossEntropy_fn = SoftCrossEntropyLoss(smooth_factor=0.1)
-        criterion = L.JointLoss(first=DiceLoss_fn, second=SoftCrossEntropy_fn,first_weight=0.7, second_weight=0.3).cuda()
+        criterion = L.JointLoss(first=DiceLoss_fn, second=SoftCrossEntropy_fn,first_weight=0.6, second_weight=0.4).cuda()
         ##criterion = nn.CrossEntropyLoss()
         ##criterion = CriterionOhemDSN(thresh=0.6, min_kept=200000) ## apply loss of CCNet
         ##FolalLoss_fn = FocalLoss(mode="multiclass")
@@ -196,16 +196,16 @@ if __name__ == '__main__':
     optimizer = torch.optim.SGD(model.parameters(), lr=args.lr_start, momentum=0.9, weight_decay=0.0005)
     scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=args.lr_decay, last_epoch=-1)
 
-    weight_dir = os.path.join("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.7_0.3/", args.model_name)
+    weight_dir = os.path.join("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.6_0.4/", args.model_name)
     if not os.path.exists(weight_dir):
         os.makedirs(weight_dir)
     os.chmod(weight_dir,
              stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
 
-    writer = SummaryWriter("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.7_0.3/tensorboard_log")
-    os.chmod("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.7_0.3/tensorboard_log",
+    writer = SummaryWriter("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.6_0.4/tensorboard_log")
+    os.chmod("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.6_0.4/tensorboard_log",
              stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
-    os.chmod("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.7_0.3", stat.S_IRWXO)
+    os.chmod("./runs_dual_2.2_PST900_batch2_lr0.02_loss0.6_0.4", stat.S_IRWXO)
 
     print('training %s on GPU #%d with pytorch' % (args.model_name, args.gpu))
     print('from epoch %d / %s' % (args.epoch_from, args.epoch_max))
