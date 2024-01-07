@@ -30,10 +30,10 @@ from loss_hub.losses import FocalLoss #import this if you wanto to apply Focal l
 parser = argparse.ArgumentParser(description='Train with pytorch')
 ""
 parser.add_argument('--model_name', '-m', type=str, default='FEANet')
-parser.add_argument('--batch_size', '-b', type=int, default=8)
+parser.add_argument('--batch_size', '-b', type=int, default=4)
 parser.add_argument('--lr_start', '-ls', type=float, default=0.03)
 parser.add_argument('--seed', '-seed',default=42, type=int,help='seed for initializing training. ')
-parser.add_argument('--gpu', '-g', type=int, default=2)
+parser.add_argument('--gpu', '-g', type=int, default=3)
 ""
 parser.add_argument('--lr_decay', '-ld', type=float, default=0.95)
 parser.add_argument('--epoch_max', '-em', type=int, default=200) # please stop training mannully
@@ -200,16 +200,16 @@ if __name__ == '__main__':
     optimizer = torch.optim.SGD(model.parameters(), lr=args.lr_start, momentum=0.9, weight_decay=0.0005)
     scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=args.lr_decay, last_epoch=-1)
 
-    weight_dir = os.path.join("./runs_dual_2.2_lr0.03_batch8/", args.model_name)
+    weight_dir = os.path.join("./runs_dual_2.2_lr0.03_batch4/", args.model_name)
     if not os.path.exists(weight_dir):
         os.makedirs(weight_dir)
     os.chmod(weight_dir,
              stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
 
-    writer = SummaryWriter("./runs_dual_2.2_lr0.03_batch8/tensorboard_log")
-    os.chmod("./runs_dual_2.2_lr0.03_batch8/tensorboard_log",
+    writer = SummaryWriter("./runs_dual_2.2_lr0.03_batch4/tensorboard_log")
+    os.chmod("./runs_dual_2.2_lr0.03_batch4/tensorboard_log",
              stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
-    os.chmod("./runs_dual_2.2_lr0.03_batch8", stat.S_IRWXO)
+    os.chmod("./runs_dual_2.2_lr0.03_batch4", stat.S_IRWXO)
 
     print('training %s on GPU #%d with pytorch' % (args.model_name, args.gpu))
     print('from epoch %d / %s' % (args.epoch_from, args.epoch_max))
