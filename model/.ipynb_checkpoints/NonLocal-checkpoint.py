@@ -170,9 +170,10 @@ class FEANet(nn.Module):
         if verbose: print("thermal.size() after relu: ", thermal.size())  # (240, 320)
         ######################################################################
         # Des-comentar para usar los bloques RCCAModule en imagen termica y RGB
-        rgb  = self.atten_NLBlock_0(rgb)
-        temp = self.atten_NLBlock_0(thermal)
-        rgb = rgb + temp
+        rgb_aux  = self.atten_NLBlock_0(rgb)
+        temp_aux = self.atten_NLBlock_0(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         # rgb = rgb + thermal #comentar para usar los bloques RCCAModule en imagen termica y RGB
         ######################################################################
@@ -186,28 +187,30 @@ class FEANet(nn.Module):
         thermal = self.encoder_thermal_layer1(thermal)
         if verbose: print("thermal.size() after layer1: ", thermal.size())  # (120, 160)
         ######################################################################
-        rgb  = self.atten_NLBlock_1(rgb)
-        temp = self.atten_NLBlock_1(thermal)
-        rgb = rgb + temp
-
+        rgb_aux  = self.atten_NLBlock_1(rgb)
+        temp_aux = self.atten_NLBlock_1(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer2(rgb)
         if verbose: print("rgb.size() after layer2: ", rgb.size())  # (60, 80)
         thermal = self.encoder_thermal_layer2(thermal)
         if verbose: print("thermal.size() after layer2: ", thermal.size())  # (60, 80)
         ######################################################################
-        rgb  = self.atten_NLBlock_2(rgb)
-        temp = self.atten_NLBlock_2(thermal)
-        rgb = rgb + temp
+        rgb_aux  = self.atten_NLBlock_2(rgb)
+        temp_aux = self.atten_NLBlock_2(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer3(rgb)
         if verbose: print("rgb.size() after layer3: ", rgb.size())  # (30, 40)
         thermal = self.encoder_thermal_layer3(thermal)
         if verbose: print("thermal.size() after layer3: ", thermal.size())  # (30, 40)
         ######################################################################
-        rgb = self.atten_NLBlock_3_1(rgb)
-        temp = self.atten_NLBlock_3_1(thermal)
-        rgb = rgb + temp
+        rgb_aux = self.atten_NLBlock_3_1(rgb)
+        temp_aux = self.atten_NLBlock_3_1(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer4(rgb)
         if verbose: print("rgb.size() after layer4: ", rgb.size())  # (15, 20)
@@ -215,9 +218,9 @@ class FEANet(nn.Module):
         if verbose: print("thermal.size() after layer4: ", thermal.size())  # (15, 20)
         ######################################################################
         # Des-comentar para usar los bloques RCCAModule en imagen termica y RGB
-        rgb = self.atten_NLBlock_4_1(rgb)
-        temp = self.atten_NLBlock_4_1(thermal)
-        fuse = rgb + temp
+        rgb_aux = self.atten_NLBlock_4_1(rgb)
+        temp_aux = self.atten_NLBlock_4_1(thermal)
+        fuse = rgb_aux + temp_aux
         ######################################################################
         # fuse = rgb + thermal #comentar para usar los bloques RCCAModule en imagen termica y RGB
         ######################################################################
@@ -285,8 +288,8 @@ class TransBottleneck(nn.Module):
 
 
 def unit_test():
-    net = FEANet(9).cuda(2)
-    image = torch.randn(1, 4, 480, 640).cuda(2)
+    net = FEANet(9).cuda(0)
+    image = torch.randn(1, 4, 480, 640).cuda(0)
     with torch.no_grad():
         output = net.forward(image)
     flops, params = profile(net, inputs=(image, ))
