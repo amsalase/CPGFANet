@@ -16,11 +16,12 @@ from torch.utils.tensorboard import SummaryWriter
 from pytorch_toolbelt import losses as L
 from loss_hub.losses import DiceLoss,SoftCrossEntropyLoss
 #from model.NonLocal import FEANet
-from model.SqzExc import FEANet
+#from model.SqzExc import FEANet
 #from model.DualAttention import FEANet
 #from model.DeepLabv3 import FEANet
 #from model.SegNet import FEANet
 #from model.CrissCrossAttention_dual_2_sinINF import FEANet
+from model.FEANet import FEANet
 from torch.cuda.amp import autocast,GradScaler
 from torch import nn
 from loss_hub.losses import CriterionOhemDSN #import this if you want to apply the same loss tecnique of CCNet
@@ -32,7 +33,7 @@ parser.add_argument('--model_name', '-m', type=str, default='FEANet')
 parser.add_argument('--batch_size', '-b', type=int, default=5)
 parser.add_argument('--lr_start', '-ls', type=float, default=0.03)
 parser.add_argument('--seed', '-seed',default=42, type=int,help='seed for initializing training. ')
-parser.add_argument('--gpu', '-g', type=int, default=2)
+parser.add_argument('--gpu', '-g', type=int, default=0)
 ""
 parser.add_argument('--lr_decay', '-ld', type=float, default=0.95)
 parser.add_argument('--epoch_max', '-em', type=int, default=200) # please stop training mannully
@@ -204,16 +205,16 @@ if __name__ == '__main__':
     optimizer = torch.optim.SGD(model.parameters(), lr=args.lr_start, momentum=0.9, weight_decay=0.0005)
     scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=args.lr_decay, last_epoch=-1)
 
-    weight_dir = os.path.join("./runs_dual_2.2.sqzexc/", args.model_name)
+    weight_dir = os.path.join("./runs_dual_2.2.cbam/", args.model_name)
     if not os.path.exists(weight_dir):
         os.makedirs(weight_dir)
     os.chmod(weight_dir,
              stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
 
-    writer = SummaryWriter("./runs_dual_2.2.sqzexc/tensorboard_log")
-    os.chmod("./runs_dual_2.2.sqzexc/tensorboard_log",
+    writer = SummaryWriter("./runs_dual_2.2.cbam/tensorboard_log")
+    os.chmod("./runs_dual_2.2.cbam/tensorboard_log",
              stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
-    os.chmod("./runs_dual_2.2.sqzexc", stat.S_IRWXO)
+    os.chmod("./runs_dual_2.2.cbam", stat.S_IRWXO)
 
     print('training %s on GPU #%d with pytorch' % (args.model_name, args.gpu))
     print('from epoch %d / %s' % (args.epoch_from, args.epoch_max))

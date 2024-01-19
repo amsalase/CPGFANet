@@ -4,6 +4,9 @@
 import torch
 import torch.nn as nn
 import torchvision.models as models
+from torch.nn import functional as F
+from torch.nn import Softmax
+from thop import profile
 ################ FEAM #########################################
 # Channel Attention
 class ChannelAttention(nn.Module):
@@ -162,11 +165,12 @@ class FEANet(nn.Module):
         thermal = self.encoder_thermal_relu(thermal)
         if verbose: print("thermal.size() after relu: ", thermal.size())  # (240, 320)
         ######################################################################
-        rgb = rgb.mul(self.atten_depth_channel_0(rgb))
-        rgb = rgb.mul(self.atten_depth_spatial_0(rgb))
-        temp = thermal.mul(self.atten_depth_channel_0(thermal))
-        temp = temp.mul(self.atten_depth_spatial_0(temp))
-        rgb = rgb + temp
+        rgb_aux = rgb.mul(self.atten_depth_channel_0(rgb))
+        rgb_aux = rgb_aux.mul(self.atten_depth_spatial_0(rgb_aux))
+        temp_aux = thermal.mul(self.atten_depth_channel_0(thermal))
+        temp_aux = temp_aux.mul(self.atten_depth_spatial_0(temp_aux))
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_maxpool(rgb)
         if verbose: print("rgb.size() after maxpool: ", rgb.size())  # (120, 160)
@@ -178,44 +182,47 @@ class FEANet(nn.Module):
         thermal = self.encoder_thermal_layer1(thermal)
         if verbose: print("thermal.size() after layer1: ", thermal.size())  # (120, 160)
         ######################################################################
-        rgb = rgb.mul(self.atten_depth_channel_1(rgb))
-        rgb = rgb.mul(self.atten_depth_spatial_1(rgb))
-        thermal = thermal.mul(self.atten_depth_channel_1(thermal))
-        temp = thermal.mul(self.atten_depth_spatial_1(thermal))
-        rgb = rgb + temp
+        rgb_aux = rgb.mul(self.atten_depth_channel_1(rgb))
+        rgb_aux = rgb_aux.mul(self.atten_depth_spatial_1(rgb_aux))
+        temp_aux = thermal.mul(self.atten_depth_channel_1(thermal))
+        temp_aux = temp_aux.mul(self.atten_depth_spatial_1(temp_aux))
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer2(rgb)
         if verbose: print("rgb.size() after layer2: ", rgb.size())  # (60, 80)
         thermal = self.encoder_thermal_layer2(thermal)
         if verbose: print("thermal.size() after layer2: ", thermal.size())  # (60, 80)
         ######################################################################
-        rgb = rgb.mul(self.atten_depth_channel_2(rgb))
-        rgb = rgb.mul(self.atten_depth_spatial_2(rgb))
-        temp = thermal.mul(self.atten_depth_channel_2(thermal))
-        temp = temp.mul(self.atten_depth_spatial_2(temp))
-        rgb = rgb + temp
+        rgb_aux = rgb.mul(self.atten_depth_channel_2(rgb))
+        rgb_aux = rgb_aux.mul(self.atten_depth_spatial_2(rgb_aux))
+        temp_aux = thermal.mul(self.atten_depth_channel_2(thermal))
+        temp_aux = temp_aux.mul(self.atten_depth_spatial_2(temp_aux))
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer3(rgb)
         if verbose: print("rgb.size() after layer3: ", rgb.size())  # (30, 40)
         thermal = self.encoder_thermal_layer3(thermal)
         if verbose: print("thermal.size() after layer3: ", thermal.size())  # (30, 40)
         ######################################################################
-        rgb = rgb.mul(self.atten_depth_channel_3_1(rgb))
-        rgb = rgb.mul(self.atten_depth_spatial_3_1(rgb))
-        temp = thermal.mul(self.atten_depth_channel_3_1(thermal))
-        temp = thermal.mul(self.atten_depth_spatial_3_1(temp))
-        rgb = rgb + temp
+        rgb_aux = rgb.mul(self.atten_depth_channel_3_1(rgb))
+        rgb_aux = rgb_aux.mul(self.atten_depth_spatial_3_1(rgb_aux))
+        temp_aux = thermal.mul(self.atten_depth_channel_3_1(thermal))
+        temp_aux = temp_aux.mul(self.atten_depth_spatial_3_1(temp_aux))
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer4(rgb)
         if verbose: print("rgb.size() after layer4: ", rgb.size())  # (15, 20)
         thermal = self.encoder_thermal_layer4(thermal)
         if verbose: print("thermal.size() after layer4: ", thermal.size())  # (15, 20)
         ######################################################################
-        rgb = rgb.mul(self.atten_depth_channel_4_1(rgb))
-        rgb = rgb.mul(self.atten_depth_spatial_4_1(rgb))
-        temp = thermal.mul(self.atten_depth_channel_4_1(thermal))
-        temp = temp.mul(self.atten_depth_spatial_4_1(temp))
-        fuse = rgb + temp
+        rgb_aux = rgb.mul(self.atten_depth_channel_4_1(rgb))
+        rgb_aux = rgb_aux.mul(self.atten_depth_spatial_4_1(rgb_aux))
+        temp_aux = thermal.mul(self.atten_depth_channel_4_1(thermal))
+        temp_aux = temp_aux.mul(self.atten_depth_spatial_4_1(temp_aux))
+        fuse = rgb_aux + temp_aux
         ######################################################################
         # decoder
         fuse = self.deconv1(fuse)
@@ -282,6 +289,11 @@ class TransBottleneck(nn.Module):
 
 def unit_test():
     net = FEANet(9).cuda(0)
-    print(net)
+    image = torch.randn(1, 4, 480, 640).cuda(0)
+    with torch.no_grad():
+        output = net.forward(image)
+    flops, params = profile(net, inputs=(image, ))
+    print(f"FLOPs: {flops}, Params: {params}")
 
-# unit_test()
+
+unit_test()
