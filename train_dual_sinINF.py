@@ -20,8 +20,8 @@ from loss_hub.losses import DiceLoss,SoftCrossEntropyLoss
 #from model.DualAttention import FEANet
 #from model.DeepLabv3 import FEANet
 #from model.SegNet import FEANet
-#from model.CrissCrossAttention_dual_2_sinINF import FEANet
-from model.FEANet import FEANet
+from model.CrissCrossAttention_dual_2_sinINF import FEANet
+#from model.FEANet import FEANet
 from torch.cuda.amp import autocast,GradScaler
 from torch import nn
 from loss_hub.losses import CriterionOhemDSN #import this if you want to apply the same loss tecnique of CCNet
@@ -33,7 +33,7 @@ parser.add_argument('--model_name', '-m', type=str, default='FEANet')
 parser.add_argument('--batch_size', '-b', type=int, default=5)
 parser.add_argument('--lr_start', '-ls', type=float, default=0.03)
 parser.add_argument('--seed', '-seed',default=42, type=int,help='seed for initializing training. ')
-parser.add_argument('--gpu', '-g', type=int, default=0)
+parser.add_argument('--gpu', '-g', type=int, default=1)
 ""
 parser.add_argument('--lr_decay', '-ld', type=float, default=0.95)
 parser.add_argument('--epoch_max', '-em', type=int, default=200) # please stop training mannully
@@ -63,7 +63,7 @@ def train(epo, model, train_loader, optimizer):
         ##FocalLoss_fn = FocalLoss(mode="multiclass")
         SoftCrossEntropy_fn = SoftCrossEntropyLoss(smooth_factor=0.1)
         ##criterion = L.JointLoss(first=FocalLoss_fn, second=SoftCrossEntropy_fn,first_weight=0.5, second_weight=0.5).cuda()
-        criterion = L.JointLoss(first=DiceLoss_fn, second=SoftCrossEntropy_fn,first_weight=0.6, second_weight=0.6).cuda()
+        criterion = L.JointLoss(first=DiceLoss_fn, second=SoftCrossEntropy_fn,first_weight=0.5, second_weight=0.5).cuda()
         ##criterion = nn.CrossEntropyLoss()
         ##criterion = CriterionOhemDSN(thresh=0.6, min_kept=200000) ## apply loss of CCNet
         ##FolalLoss_fn = FocalLoss(mode="multiclass")
