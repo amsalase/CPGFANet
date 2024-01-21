@@ -10,10 +10,6 @@ from typing import Any, List, Optional
 from thop import profile
 
 
-def INF(B,H,W):
-    return -torch.diag(torch.tensor(float("inf"), device=0).repeat(H),0).unsqueeze(0).repeat(B*W,1,1)
-
-
 class CrissCrossAttention(nn.Module):
     """ Criss-Cross Attention Module"""
     def __init__(self, in_dim):
@@ -24,7 +20,6 @@ class CrissCrossAttention(nn.Module):
         self.value_conv = nn.Conv2d(in_channels=in_dim, out_channels=in_dim, kernel_size=1)
         self.softmax = Softmax(dim=3)
         self.relu1 = nn.ReLU()
-        self.INF = INF
         self.gamma = nn.Parameter(torch.zeros(1))
 
 
@@ -43,7 +38,7 @@ class CrissCrossAttention(nn.Module):
         proj_value = self.relu1(proj_value)
         proj_value_H = proj_value.permute(0,3,1,2).contiguous().view(m_batchsize*width,-1,height)
         proj_value_W = proj_value.permute(0,2,1,3).contiguous().view(m_batchsize*height,-1,width)
-        energy_H = (torch.matmul(proj_query_H, proj_key_H)+self.INF(m_batchsize, height, width)).view(m_batchsize,width,height,height).permute(0,2,1,3)
+        energy_H = torch.matmul(proj_query_H, proj_key_H).view(m_batchsize,width,height,height).permute(0,2,1,3)
         energy_W = torch.matmul(proj_query_W, proj_key_W).view(m_batchsize,height,width,width)
         concate = self.softmax(torch.cat([energy_H, energy_W], 3))
         att_H = concate[:,:,:,0:height].permute(0,2,1,3).contiguous().view(m_batchsize*width,height,height)
@@ -215,9 +210,10 @@ class FEANet(nn.Module):
         if verbose: print("thermal.size() after relu: ", thermal.size())  # (240, 320)
         ######################################################################
         # Des-comentar para usar los bloques RCCAModule en imagen termica y RGB
-        rgb  = self.atten_RCCAModule_0(rgb)
-        temp = self.atten_RCCAModule_0(thermal)
-        rgb = rgb + temp
+        rgb_aux  = self.atten_RCCAModule_0(rgb)
+        temp_aux = self.atten_RCCAModule_0(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         # rgb = rgb + thermal #comentar para usar los bloques RCCAModule en imagen termica y RGB
         ######################################################################
@@ -231,27 +227,30 @@ class FEANet(nn.Module):
         thermal = self.encoder_thermal_layer1(thermal)
         if verbose: print("thermal.size() after layer1: ", thermal.size())  # (120, 160)
         ######################################################################
-        rgb  = self.atten_RCCAModule_1(rgb)
-        temp = self.atten_RCCAModule_1(thermal)
-        rgb = rgb + temp
+        rgb_aux  = self.atten_RCCAModule_1(rgb)
+        temp_aux = self.atten_RCCAModule_1(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer2(rgb)
         if verbose: print("rgb.size() after layer2: ", rgb.size())  # (60, 80)
         thermal = self.encoder_thermal_layer2(thermal)
         if verbose: print("thermal.size() after layer2: ", thermal.size())  # (60, 80)
         ######################################################################
-        rgb  = self.atten_RCCAModule_2(rgb)
-        temp = self.atten_RCCAModule_2(thermal)
-        rgb = rgb + temp
+        rgb_aux  = self.atten_RCCAModule_2(rgb)
+        temp_aux = self.atten_RCCAModule_2(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer3(rgb)
         if verbose: print("rgb.size() after layer3: ", rgb.size())  # (30, 40)
         thermal = self.encoder_thermal_layer3(thermal)
         if verbose: print("thermal.size() after layer3: ", thermal.size())  # (30, 40)
         ######################################################################
-        rgb = self.atten_RCCAModule_3_1(rgb)
-        temp = self.atten_RCCAModule_3_1(thermal)
-        rgb = rgb + temp
+        rgb_aux = self.atten_RCCAModule_3_1(rgb)
+        temp_aux = self.atten_RCCAModule_3_1(thermal)
+        rgb = rgb + temp_aux
+        thermal = thermal + rgb_aux
         ######################################################################
         rgb = self.encoder_rgb_layer4(rgb)
         if verbose: print("rgb.size() after layer4: ", rgb.size())  # (15, 20)
@@ -259,9 +258,9 @@ class FEANet(nn.Module):
         if verbose: print("thermal.size() after layer4: ", thermal.size())  # (15, 20)
         ######################################################################
         # Des-comentar para usar los bloques RCCAModule en imagen termica y RGB
-        rgb = self.atten_RCCAModule_4_1(rgb)
-        temp = self.atten_RCCAModule_4_1(thermal)
-        fuse = rgb + temp
+        rgb_aux = self.atten_RCCAModule_4_1(rgb)
+        temp_aux = self.atten_RCCAModule_4_1(thermal)
+        fuse = rgb_aux + temp_aux
         ######################################################################
         # fuse = rgb + thermal #comentar para usar los bloques RCCAModule en imagen termica y RGB
         ######################################################################
@@ -271,15 +270,9 @@ class FEANet(nn.Module):
         return(fuse)
 
 def unit_test():
-    net = FEANet(9).cuda(0)
-    image = torch.randn(2, 4, 480, 640).cuda(0)
+    net = FEANet(9).cuda(1)
+    image = torch.randn(2, 4, 480, 640).cuda(1)
     with torch.no_grad():
         output = net.forward(image)
     flops, params = profile(net, inputs=(image, ))
     print(f"FLOPs: {flops}, Params: {params}")
-
-
-
-
-
-
