@@ -22,7 +22,7 @@ def visualize(image_name, predictions, weight_name):
         for cid in range(0, len(palette)): # fix the mistake from the MFNet code on Dec.27, 2019
             img[pred == cid] = palette[cid]
         img = Image.fromarray(np.uint8(img))
-        img.save('./result/Pred/PST_900/'+weight_name + '_' + image_name[i])
+        img.save('./result/Pred/Dual_pst/'+weight_name + '_' + image_name[i])
 
 def compute_results(conf_total):
     n_class =  conf_total.shape[0]
