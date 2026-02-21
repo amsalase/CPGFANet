@@ -1,0 +1,225 @@
+{
+  "id": 11476,
+  "annotations": [
+    {
+      "id": 2382,
+      "completed_by": 1,
+      "result": [
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                27.091289543765463,
+                44.253070149153864
+              ],
+              [
+                35.60635605877352,
+                44.174226940681564
+              ],
+              [
+                37.67599028117131,
+                48.66828982360248
+              ],
+              [
+                38.20818193835932,
+                56.00070821152608
+              ],
+              [
+                37.971652312942425,
+                56.78914029624905
+              ],
+              [
+                37.9125199065882,
+                59.78518221819634
+              ],
+              [
+                36.72987177950374,
+                59.62749580125174
+              ],
+              [
+                35.42895883971085,
+                58.99675013347336
+              ],
+              [
+                35.36982643335663,
+                57.34104275555514
+              ],
+              [
+                31.762749645749043,
+                57.73525879791662
+              ],
+              [
+                28.983526547100585,
+                57.57757238097202
+              ],
+              [
+                27.03215713741124,
+                57.814102006388914
+              ],
+              [
+                26.086038635743673,
+                60.415927885974696
+              ],
+              [
+                25.49471457220145,
+                61.046673553753074
+              ],
+              [
+                25.553846978555672,
+                45.27803185929372
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car"
+            ]
+          },
+          "id": "gJmknZx7Zg",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                58.96365656869145,
+                61.046673553753074
+              ],
+              [
+                62.03854169911103,
+                61.362046387642266
+              ],
+              [
+                61.80201207369414,
+                56.47376746235986
+              ],
+              [
+                62.03854169911103,
+                55.36996254374771
+              ],
+              [
+                61.4472176355688,
+                54.58153045902474
+              ],
+              [
+                60.02803988306745,
+                54.42384404208015
+              ],
+              [
+                59.31845100681677,
+                54.896903292913926
+              ],
+              [
+                59.31845100681677,
+                58.52369088263958
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car_stop"
+            ]
+          },
+          "id": "kAN6VsgsgF",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                84.74383916061058,
+                60.967830345280774
+              ],
+              [
+                87.81872429103015,
+                61.125516762225374
+              ],
+              [
+                87.93698910373861,
+                55.05458970985851
+              ],
+              [
+                86.93173819571682,
+                54.73921687596932
+              ],
+              [
+                85.33516322415281,
+                54.73921687596932
+              ],
+              [
+                84.62557434790214,
+                54.896903292913926
+              ],
+              [
+                84.74383916061058,
+                56.31608104541527
+              ],
+              [
+                84.68470675425637,
+                58.2083180487504
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car_stop"
+            ]
+          },
+          "id": "mNtWPtfCmQ",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        }
+      ],
+      "was_cancelled": false,
+      "ground_truth": false,
+      "created_at": "2025-12-09T21:47:45.005059Z",
+      "updated_at": "2025-12-09T21:47:45.005088Z",
+      "draft_created_at": "2025-12-09T21:44:49.943215Z",
+      "lead_time": 243.109,
+      "prediction": {},
+      "result_count": 3,
+      "unique_id": "a2d93c92-2189-40ee-b91a-768e77f0a12c",
+      "import_id": null,
+      "last_action": null,
+      "bulk_created": false,
+      "task": 11476,
+      "project": 3,
+      "updated_by": 1,
+      "parent_prediction": null,
+      "parent_annotation": null,
+      "last_created_by": null
+    }
+  ],
+  "drafts": [],
+  "predictions": [],
+  "data": {
+    "image": "/data/local-files/?d=proyecto_oct_2025_sam2/dataset/dataset_2025/estadistica/mfnet/rgb_images/task_0006.png"
+  },
+  "meta": {},
+  "created_at": "2025-12-09T21:05:01.424208Z",
+  "updated_at": "2025-12-09T21:47:47.579999Z",
+  "inner_id": 6,
+  "total_annotations": 1,
+  "cancelled_annotations": 0,
+  "total_predictions": 0,
+  "comment_count": 0,
+  "unresolved_comment_count": 0,
+  "last_comment_updated_at": null,
+  "project": 3,
+  "updated_by": 1,
+  "comment_authors": []
+}

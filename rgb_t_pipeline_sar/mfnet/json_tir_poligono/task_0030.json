@@ -1,0 +1,183 @@
+{
+  "id": 11590,
+  "annotations": [
+    {
+      "id": 2458,
+      "completed_by": 1,
+      "result": [
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                15.0974025974026,
+                65.80086580086581
+              ],
+              [
+                28.8961038961039,
+                57.7922077922078
+              ],
+              [
+                33.76623376623377,
+                54.97835497835498
+              ],
+              [
+                36.201298701298704,
+                53.46320346320347
+              ],
+              [
+                37.01298701298701,
+                55.84415584415584
+              ],
+              [
+                32.467532467532465,
+                58.44155844155844
+              ],
+              [
+                30.681818181818183,
+                59.74025974025974
+              ],
+              [
+                24.675324675324674,
+                64.06926406926407
+              ],
+              [
+                19.967532467532468,
+                66.88311688311688
+              ],
+              [
+                16.071428571428573,
+                68.61471861471861
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "curve"
+            ]
+          },
+          "id": "mA2wja5tO7",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                91.79208826197313,
+                51.24260037648194
+              ],
+              [
+                91.27369383641354,
+                52.855383033778445
+              ],
+              [
+                90.32330405622098,
+                53.54657560119123
+              ],
+              [
+                89.1137170632486,
+                55.50495454219413
+              ],
+              [
+                88.0769282121294,
+                58.039327289374356
+              ],
+              [
+                89.54571241788159,
+                59.19131490172901
+              ],
+              [
+                93.60646875143172,
+                59.5369111854354
+              ],
+              [
+                97.32162880127545,
+                60.228103752848185
+              ],
+              [
+                98.79041300702762,
+                57.34813472196157
+              ],
+              [
+                99.30880743258722,
+                55.044159497252274
+              ],
+              [
+                99.6544037162936,
+                53.43137683995577
+              ],
+              [
+                98.01282136868824,
+                52.27938922760112
+              ],
+              [
+                96.45763809200946,
+                52.27938922760112
+              ],
+              [
+                94.8160557444041,
+                52.27938922760112
+              ],
+              [
+                92.74247804216573,
+                52.27938922760112
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "bike"
+            ]
+          },
+          "id": "EyNRE_FiXq",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        }
+      ],
+      "was_cancelled": false,
+      "ground_truth": false,
+      "created_at": "2025-12-10T01:21:42.412016Z",
+      "updated_at": "2025-12-10T11:12:53.265266Z",
+      "draft_created_at": "2025-12-09T23:50:43.496429Z",
+      "lead_time": 97.346,
+      "prediction": {},
+      "result_count": 2,
+      "unique_id": "4ed5e249-cf4e-4a37-bbad-879e636d6831",
+      "import_id": null,
+      "last_action": null,
+      "bulk_created": false,
+      "task": 11590,
+      "project": 23,
+      "updated_by": 1,
+      "parent_prediction": null,
+      "parent_annotation": null,
+      "last_created_by": null
+    }
+  ],
+  "drafts": [],
+  "predictions": [],
+  "data": {
+    "image": "/data/local-files/?d=proyecto_oct_2025_sam2/dataset/dataset_2025/estadistica/mfnet/tir_images/task_0030.png"
+  },
+  "meta": {},
+  "created_at": "2025-12-10T01:21:42.359738Z",
+  "updated_at": "2025-12-10T11:12:56.867170Z",
+  "inner_id": 30,
+  "total_annotations": 1,
+  "cancelled_annotations": 0,
+  "total_predictions": 0,
+  "comment_count": 0,
+  "unresolved_comment_count": 0,
+  "last_comment_updated_at": null,
+  "project": 23,
+  "updated_by": 1,
+  "comment_authors": []
+}

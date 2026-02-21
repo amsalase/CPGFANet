@@ -1,0 +1,277 @@
+{
+  "id": 11489,
+  "annotations": [
+    {
+      "id": 2394,
+      "completed_by": 1,
+      "result": [
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                19.6875,
+                66.04166666666667
+              ],
+              [
+                19.0625,
+                56.041666666666664
+              ],
+              [
+                22.65625,
+                55.208333333333336
+              ],
+              [
+                23.125,
+                66.25
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car_stop"
+            ]
+          },
+          "id": "N-03meGB2b",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                39.0625,
+                64.375
+              ],
+              [
+                39.0625,
+                53.541666666666664
+              ],
+              [
+                42.1875,
+                52.29166666666667
+              ],
+              [
+                42.34375,
+                63.541666666666664
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car_stop"
+            ]
+          },
+          "id": "N1rPXWj-ma",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                58.28124999999999,
+                63.74999999999999
+              ],
+              [
+                58.4375,
+                52.708333333333336
+              ],
+              [
+                60.9375,
+                52.708333333333336
+              ],
+              [
+                61.09375,
+                63.33333333333333
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car_stop"
+            ]
+          },
+          "id": "RZIMEcHa_I",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                76.25,
+                65
+              ],
+              [
+                76.71875,
+                54.37499999999999
+              ],
+              [
+                79.84375,
+                53.75
+              ],
+              [
+                79.53125,
+                64.79166666666667
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car_stop"
+            ]
+          },
+          "id": "OrKA9qNSPY",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                95,
+                65.83333333333333
+              ],
+              [
+                94.53125,
+                58.958333333333336
+              ],
+              [
+                97.65625,
+                58.54166666666667
+              ],
+              [
+                97.8125,
+                66.25
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "car_stop"
+            ]
+          },
+          "id": "IvUz5196kL",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                27.8125,
+                59.166666666666664
+              ],
+              [
+                28.281250000000004,
+                51.87500000000001
+              ],
+              [
+                30.312499999999996,
+                59.583333333333336
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "color_cone"
+            ]
+          },
+          "id": "ikktTT13GV",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                64.41717791411043,
+                58.077709611451944
+              ],
+              [
+                65.33742331288343,
+                50.715746421267895
+              ],
+              [
+                66.71779141104295,
+                58.282208588957054
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "color_cone"
+            ]
+          },
+          "id": "Vlwcx94iBt",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        }
+      ],
+      "was_cancelled": false,
+      "ground_truth": false,
+      "created_at": "2025-12-09T23:16:48.868256Z",
+      "updated_at": "2025-12-09T23:17:39.035054Z",
+      "draft_created_at": "2025-12-09T23:15:57.124174Z",
+      "lead_time": 136.119,
+      "prediction": {},
+      "result_count": 7,
+      "unique_id": "686783f2-3dfb-4a5a-b800-df24d1bfdb67",
+      "import_id": null,
+      "last_action": null,
+      "bulk_created": false,
+      "task": 11489,
+      "project": 3,
+      "updated_by": 1,
+      "parent_prediction": null,
+      "parent_annotation": null,
+      "last_created_by": null
+    }
+  ],
+  "drafts": [],
+  "predictions": [],
+  "data": {
+    "image": "/data/local-files/?d=proyecto_oct_2025_sam2/dataset/dataset_2025/estadistica/mfnet/rgb_images/task_0019.png"
+  },
+  "meta": {},
+  "created_at": "2025-12-09T21:05:11.752912Z",
+  "updated_at": "2025-12-09T23:17:42.832579Z",
+  "inner_id": 19,
+  "total_annotations": 1,
+  "cancelled_annotations": 0,
+  "total_predictions": 0,
+  "comment_count": 0,
+  "unresolved_comment_count": 0,
+  "last_comment_updated_at": null,
+  "project": 3,
+  "updated_by": 1,
+  "comment_authors": []
+}

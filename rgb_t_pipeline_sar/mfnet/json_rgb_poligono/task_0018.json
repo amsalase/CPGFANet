@@ -1,0 +1,22 @@
+{
+  "id": 11488,
+  "annotations": [],
+  "drafts": [],
+  "predictions": [],
+  "data": {
+    "image": "/data/local-files/?d=proyecto_oct_2025_sam2/dataset/dataset_2025/estadistica/mfnet/rgb_images/task_0018.png"
+  },
+  "meta": {},
+  "created_at": "2025-12-09T21:05:11.141646Z",
+  "updated_at": "2025-12-09T21:05:11.141720Z",
+  "inner_id": 18,
+  "total_annotations": 0,
+  "cancelled_annotations": 0,
+  "total_predictions": 0,
+  "comment_count": 0,
+  "unresolved_comment_count": 0,
+  "last_comment_updated_at": null,
+  "project": 3,
+  "updated_by": null,
+  "comment_authors": []
+}

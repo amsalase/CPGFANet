@@ -1,0 +1,81 @@
+{
+  "id": 11588,
+  "annotations": [
+    {
+      "id": 2461,
+      "completed_by": 1,
+      "result": [
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                0.27829313543599254,
+                72.17068645640074
+              ],
+              [
+                19.480519480519483,
+                62.33766233766234
+              ],
+              [
+                19.619666048237477,
+                69.20222634508349
+              ],
+              [
+                0.27829313543599254,
+                79.96289424860854
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "curve"
+            ]
+          },
+          "id": "WjMXhtfrQS",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        }
+      ],
+      "was_cancelled": false,
+      "ground_truth": false,
+      "created_at": "2025-12-10T11:05:16.188189Z",
+      "updated_at": "2025-12-10T11:05:16.188245Z",
+      "draft_created_at": "2025-12-10T11:05:08.911767Z",
+      "lead_time": 24.654,
+      "prediction": {},
+      "result_count": 1,
+      "unique_id": "a24dc314-e41d-4691-b518-2aa6d1f347b4",
+      "import_id": null,
+      "last_action": null,
+      "bulk_created": false,
+      "task": 11588,
+      "project": 23,
+      "updated_by": 1,
+      "parent_prediction": null,
+      "parent_annotation": null,
+      "last_created_by": null
+    }
+  ],
+  "drafts": [],
+  "predictions": [],
+  "data": {
+    "image": "/data/local-files/?d=proyecto_oct_2025_sam2/dataset/dataset_2025/estadistica/mfnet/tir_images/task_0028.png"
+  },
+  "meta": {},
+  "created_at": "2025-12-10T01:21:40.545643Z",
+  "updated_at": "2025-12-10T11:05:19.797481Z",
+  "inner_id": 28,
+  "total_annotations": 1,
+  "cancelled_annotations": 0,
+  "total_predictions": 0,
+  "comment_count": 0,
+  "unresolved_comment_count": 0,
+  "last_comment_updated_at": null,
+  "project": 23,
+  "updated_by": 1,
+  "comment_authors": []
+}

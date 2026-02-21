@@ -1,0 +1,168 @@
+{
+  "annotations": [
+    {
+      "completed_by": 1,
+      "result": [
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                15.0974025974026,
+                65.80086580086581
+              ],
+              [
+                28.8961038961039,
+                57.7922077922078
+              ],
+              [
+                33.76623376623377,
+                54.97835497835498
+              ],
+              [
+                36.201298701298704,
+                53.46320346320347
+              ],
+              [
+                37.01298701298701,
+                55.84415584415584
+              ],
+              [
+                32.467532467532465,
+                58.44155844155844
+              ],
+              [
+                30.681818181818183,
+                59.74025974025974
+              ],
+              [
+                24.675324675324674,
+                64.06926406926407
+              ],
+              [
+                19.967532467532468,
+                66.88311688311688
+              ],
+              [
+                16.071428571428573,
+                68.61471861471861
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "curve"
+            ]
+          },
+          "id": "mA2wja5tO7",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        },
+        {
+          "original_width": 640,
+          "original_height": 480,
+          "image_rotation": 0,
+          "value": {
+            "points": [
+              [
+                85.87662337662337,
+                48.268398268398265
+              ],
+              [
+                89.28571428571429,
+                48.917748917748916
+              ],
+              [
+                92.37012987012987,
+                46.96969696969697
+              ],
+              [
+                93.83116883116884,
+                46.320346320346324
+              ],
+              [
+                94.31818181818183,
+                49.35064935064935
+              ],
+              [
+                98.53896103896103,
+                50
+              ],
+              [
+                99.51298701298701,
+                51.515151515151516
+              ],
+              [
+                99.83766233766234,
+                53.67965367965368
+              ],
+              [
+                99.83766233766234,
+                56.926406926406926
+              ],
+              [
+                95.29220779220779,
+                57.14285714285714
+              ],
+              [
+                91.55844155844156,
+                57.14285714285714
+              ],
+              [
+                87.66233766233766,
+                57.57575757575758
+              ]
+            ],
+            "closed": true,
+            "polygonlabels": [
+              "bike"
+            ]
+          },
+          "id": "h2o9G4y1Xe",
+          "from_name": "label",
+          "to_name": "image",
+          "type": "polygonlabels",
+          "origin": "manual"
+        }
+      ],
+      "was_cancelled": false,
+      "ground_truth": false,
+      "created_at": "2025-12-09T23:51:14.133110Z",
+      "updated_at": "2025-12-09T23:51:14.133145Z",
+      "draft_created_at": "2025-12-09T23:50:43.496429Z",
+      "lead_time": 55.504,
+      "prediction": {},
+      "result_count": 2,
+      "import_id": null,
+      "last_action": null,
+      "bulk_created": false,
+      "task": 11500,
+      "project": 3,
+      "updated_by": 1,
+      "parent_prediction": null,
+      "parent_annotation": null,
+      "last_created_by": null
+    }
+  ],
+  "drafts": [],
+  "predictions": [],
+  "data": {
+    "image": "/data/local-files/?d=proyecto_oct_2025_sam2/dataset/dataset_2025/estadistica/mfnet/tir_images/task_0030.png"
+  },
+  "meta": {},
+  "created_at": "2025-12-09T21:05:19.556877Z",
+  "updated_at": "2025-12-09T23:51:16.916431Z",
+  "inner_id": 30,
+  "total_annotations": 1,
+  "cancelled_annotations": 0,
+  "total_predictions": 0,
+  "comment_count": 0,
+  "unresolved_comment_count": 0,
+  "last_comment_updated_at": null,
+  "project": 3,
+  "updated_by": 1,
+  "comment_authors": []
+}
