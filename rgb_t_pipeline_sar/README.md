@@ -6,7 +6,7 @@ semantic annotation, and annotation quality evaluation of RGB-Thermal
 integrates SuperGlue-based geometric alignment, SAM2-assisted annotation
 in Label Studio, and inter-annotator agreement evaluation.
 
-Repository: https://github.com/CPGFANet/rgb_t_pipeline_sar
+Repository: https://github.com/amsalase/CPGFANet/rgb_t_pipeline_sar
 
 ------------------------------------------------------------------------
 
