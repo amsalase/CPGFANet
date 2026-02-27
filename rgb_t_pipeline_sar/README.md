@@ -48,11 +48,11 @@ This notebook performs:
 -   Estimation of geometric transformation:
     -   Homography
 
-    cv2.findHomography(k_src, k_dst, method=cv2.RANSAC, ransacReprojThreshold=thr, maxIters=5000, confidence=0.995)
+            cv2.findHomography(k_src, k_dst, method=cv2.RANSAC, ransacReprojThreshold=thr, maxIters=5000, confidence=0.995)
   
     -   Affine transformation
 
-    cv2.estimateAffinePartial2D(k_src, k_dst, method=cv2.RANSAC,ransacReprojThreshold=thr, maxIters=5000, confidence=0.995)
+            cv2.estimateAffinePartial2D(k_src, k_dst, method=cv2.RANSAC,ransacReprojThreshold=thr, maxIters=5000, confidence=0.995)
        
 -   Automatic model selection based on geometric consistency criteria
 
